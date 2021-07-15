@@ -1,4 +1,4 @@
-package com.avanire.webAppTw;
+package com.avanire.webAppTw.controller;
 
 import com.avanire.webAppTw.domain.Message;
 import com.avanire.webAppTw.repos.MessageRepo;
@@ -13,22 +13,21 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class GreetingsController {
+public class MainController {
 
     private final MessageRepo messageRepo;
 
-    public GreetingsController(MessageRepo messageRepo) {
+    public MainController(MessageRepo messageRepo) {
         this.messageRepo = messageRepo;
     }
 
-    @GetMapping("/greetings")
-    public String greetings(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
-                            Map<String, Object> model) {
-        model.put("name", name);
+    @GetMapping("/")
+    public String greetings(Map<String, Object> model) {
+
         return "greetings";
     }
 
-    @GetMapping
+    @GetMapping("/main")
     private String main(Map<String, Object> model) {
         Iterable<Message> messages = messageRepo.findAll();
 
@@ -36,7 +35,7 @@ public class GreetingsController {
         return "main";
     }
 
-    @PostMapping
+    @PostMapping("/main")
     public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
         Message message = new Message(text, tag);
 
