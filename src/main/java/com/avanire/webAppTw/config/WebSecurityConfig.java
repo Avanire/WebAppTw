@@ -8,16 +8,12 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
-import javax.sql.DataSource;
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private final DataSource dataSource;
     private final UserService userService;
 
-    public WebSecurityConfig(DataSource dataSource, UserService userService) {
-        this.dataSource = dataSource;
+    public WebSecurityConfig(UserService userService) {
         this.userService = userService;
     }
 
