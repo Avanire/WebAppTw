@@ -2,5 +2,5 @@
 
 <@c.page "Главная страница">
 <h1>Hello, user</h1>
-<a href="/main">Main page</a>
+    <div></div>
 </@c.page>

@@ -3,6 +3,7 @@ package com.avanire.webAppTw.controller;
 import com.avanire.webAppTw.domain.Role;
 import com.avanire.webAppTw.domain.User;
 import com.avanire.webAppTw.repos.UserRepo;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String addUser(User user, Map<String, Object> model) {
+    public String addUser(@Valid User user, Map<String, Object> model) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
 
         if (userFromDb != null) {
